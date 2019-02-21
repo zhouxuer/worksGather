@@ -1,58 +1,50 @@
-const pkg = require('./package')
-
-
 module.exports = {
-  mode: 'universal',
-
+  server: {
+    host: '0.0.0.0', // default: localhost
+    port: 2336 // default: 3000
+  },
   /*
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: '航动开放平台',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: 'Nuxt.js + Vuetify.js project' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-
-  /*
-  ** Global CSS
-  */
-  css: [
-    'iview/dist/styles/iview.css'
+  router: {
+    middleware: [
+      'auth'
+    ]
+  },
+  plugins: [
+    '~/plugins/iview'
   ],
-
+  css: ['~/assets/style/app.scss'],
   /*
-  ** Plugins to load before mounting the App
+  ** Customize the progress bar color
   */
-  plugins: [{
-    src: '~plugins/iview',
-    ssr: true
-  }],
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-  ],
-
+  loading: { color: '#3B8070' },
   /*
   ** Build configuration
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-      
+    extractCSS: true,
+    extend (config, ctx) {
+      // Run ESLint on save
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
     }
   }
 }

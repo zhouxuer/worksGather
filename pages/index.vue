@@ -6,10 +6,10 @@
           <Input class="inputColor" v-model="formCustom.name" placeholder="Enter your name"/>
         </FormItem>
         <FormItem label="Password" prop="passwd">
-            <Input type="password" v-model="formCustom.passwd" placeholder="Enter your password"/>
+            <Input type="" v-model="formCustom.passwd" placeholder="Enter your password"/>
         </FormItem>
         <FormItem label="Confirm" prop="passwdCheck">
-            <Input type="password" v-model="formCustom.passwdCheck"/>
+            <Input type="" v-model="formCustom.passwdCheck"/>
         </FormItem>
         <FormItem>
             <Button type="primary" @click="handleSubmit('formCustom')">Submit</Button>
@@ -25,24 +25,24 @@
     data () {
       const validatePass = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('Please enter your password'));
+          callback(new Error('Please enter your password'))
         } else {
           if (this.formCustom.passwdCheck !== '') {
-              // 对第二个密码框单独验证
-              this.$refs.formCustom.validateField('passwdCheck');
+            // 对第二个密码框单独验证
+            this.$refs.formCustom.validateField('passwdCheck')
           }
-          callback();
+          callback()
         }
-      };
+      }
       const validatePassCheck = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('Please enter your password again'));
+          callback(new Error('Please enter your password again'))
         } else if (value !== this.formCustom.passwd) {
-          callback(new Error('The two input passwords do not match!'));
+          callback(new Error('The two input passwords do not match!'))
         } else {
-          callback();
+          callback()
         }
-      };
+      }
       return {
         formCustom: {
           name: '',
@@ -54,7 +54,7 @@
             { required: true, message: 'The name cannot be empty', trigger: 'blur' }
           ],
           passwd: [
-            { required: true,validator: validatePass, trigger: 'blur' }
+            { required: true, validator: validatePass, trigger: 'blur' }
           ],
           passwdCheck: [
             { validator: validatePassCheck, trigger: 'blur' }
@@ -66,29 +66,29 @@
       handleSubmit (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$Message.success('欢迎来到首页!');
+            this.$Message.success('欢迎来到首页!')
             this.pageJump()
           } else {
-            this.$Message.error('Fail!');
+            this.$Message.error('Fail!')
           }
         })
       },
       handleReset (name) {
-        this.$refs[name].resetFields();
+        this.$refs[name].resetFields()
       },
-      pageJump() {
-         this.$router.push({name: 'navigation'});
+      pageJump () {
+        this.$router.push({ name: 'navigation' })
       }
     }
 }
 </script>
 
-<style slot-scope>
+<style lang="scss" scoped>
   .bj {
     position: fixed;
     width: 100%;
     height: 100%;
-    background-image: url("~static/images/bj1.jpg");
+    background-image: url("");
     background-size:cover;
     display: flex;
     flex-flow: row wrap;
