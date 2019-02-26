@@ -6,10 +6,10 @@
           <Input class="inputColor" v-model="formCustom.name" placeholder="Enter your name"/>
         </FormItem>
         <FormItem label="Password" prop="passwd">
-            <Input type="" v-model="formCustom.passwd" placeholder="Enter your password"/>
+            <Input type="password" v-model="formCustom.passwd" placeholder="Enter your password"/>
         </FormItem>
         <FormItem label="Confirm" prop="passwdCheck">
-            <Input type="" v-model="formCustom.passwdCheck"/>
+            <Input type="password" v-model="formCustom.passwdCheck"/>
         </FormItem>
         <FormItem>
             <Button type="primary" @click="handleSubmit('formCustom')">Submit</Button>
@@ -77,10 +77,10 @@
         this.$refs[name].resetFields()
       },
       pageJump () {
-        this.$router.push({ name: 'navigation' })
+        this.$router.push({ name: 'home' })
       }
     }
-}
+  }
 </script>
 
 <style lang="scss" scoped>

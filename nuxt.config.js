@@ -7,7 +7,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: '航动开放平台',
+    title: 'Warm little family',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -23,9 +23,20 @@ module.exports = {
     ]
   },
   plugins: [
-    '~/plugins/iview'
+    { src: '~plugins/iview', ssr: true },
+    { src: '~/plugins/vue-swiper.js', ssr: false }
   ],
-  css: ['~/assets/style/app.scss'],
+  css: [
+    { src: '~/assets/style/app.scss' },
+    { src: 'swiper/dist/css/swiper.css' }
+  ],
+
+  proxy: {
+    '/app/*': {
+      target: 'http://xxx:8888',
+      secure: false
+    }
+  },
   /*
   ** Customize the progress bar color
   */
