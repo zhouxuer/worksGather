@@ -38,14 +38,15 @@
     </div>
 
     <div class="right-box">
+      <Icon v-show="contentItem" type="ios-close-circle-outline" size="50" @click="closeWeb" class="close-web"/>
       <div v-swiper:mySwiper="swiperOption">
+
         <div class="swiper-wrapper content">
           <div
             class="swiper-slide"
             v-for="(item, index) in contentItemline"
             :key="index"
           >
-            
             <div v-bind:class="{active: contentItem}" class="content-item">
               <img :src="item.img" />
               <div class="item-text">
@@ -79,6 +80,7 @@
             </div>
           </div>
         </div>
+
         <div class="on-switch" v-show="!contentItem">
           <div class="swiper-button-prev">
             <Icon type="ios-arrow-up" size="35" />
@@ -115,30 +117,65 @@ export default {
         },
         {
           title: '222',
+          img: 'http://pnkfuhy3o.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190227115003.png',
+          button: 'open case',
+          role: 'animation',
+          time: '2019',
+          author: 'Rou rou',
           to: '/webSet/ssss'
         },
         {
           title: '333',
+          img: 'https://img.zcool.cn/community/01863c5c454faea801213f26f48c85.jpg@3000w_1l_2o_100sh.jpg',
+          button: 'open case',
+          role: 'animation',
+          time: '2019',
+          author: 'Rou rou',
           to: ''
         },
         {
           title: '444',
+          img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551254549017&di=2c159a9bd87017726264a5b295d21d72&imgtype=0&src=http%3A%2F%2Fimg.mp.sohu.com%2Fupload%2F20170515%2F38ac93801ead4d339fa362bdb656a79a_th.png',
+          button: 'open case',
+          role: 'animation',
+          time: '2019',
+          author: 'Rou rou',
           to: ''
         },
         {
           title: '555',
+          img: 'http://b-ssl.duitang.com/uploads/item/201608/26/20160826090516_K3Xtu.jpeg',
+          button: 'open case',
+          role: 'animation',
+          time: '2019',
+          author: 'Rou rou',
           to: ''
         },
         {
           title: '666',
+          img: 'http://b-ssl.duitang.com/uploads/item/201606/08/20160608225929_FyeK8.jpeg',
+          button: 'open case',
+          role: 'animation',
+          time: '2019',
+          author: 'Rou rou',
           to: ''
         },
         {
           title: '777',
+          img: 'http://f6.topitme.com/6/1e/8b/1186598830f978b1e6o.jpg',
+          button: 'open case',
+          role: 'animation',
+          time: '2019',
+          author: 'Rou rou',
           to: ''
         },
         {
           title: '888',
+          img: 'http://b-ssl.duitang.com/uploads/item/201410/02/20141002141048_P3c2h.jpeg',
+          button: 'open case',
+          role: 'animation',
+          time: '2019',
+          author: 'Rou rou',
           to: ''
         }
       ],
@@ -178,6 +215,9 @@ export default {
           this.$router.push({ path: item.to })
         }
       }, 1000)
+    },
+    closeWeb () {
+      this.contentItem = false
     },
     openDirectory () {
       this.directory = true
@@ -346,12 +386,17 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
+    .close-web {
+      position: fixed;
+      right: 30px;
+      top: 30px;
+      z-index: 111111;
+      color: rgb(58, 58, 58);
+    }
     .swiper-container {
       width: 100%;
       height: 100%;
       .content {
-        width: 100%;
-        height: 100%;
         .content-item {
           box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
           background-color: rgb(0, 187, 56);
